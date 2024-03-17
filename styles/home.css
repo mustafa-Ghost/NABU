@@ -1,0 +1,403 @@
+
+
+#home .hero {
+    height: 100vh;
+    position: relative;
+    z-index: 0;
+}
+
+#home .hero .image-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+#home .hero .image-container::before,#home .hero .image-container::after{
+    width: 100%;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    height: 100%;
+    z-index:3;
+}
+#home .hero .image-container::after {
+    background: black;
+    opacity: .8;
+}
+#home .hero .image-container::before {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.111) 40%, black 100%);
+    opacity: .8;
+}
+#home .hero .image-container img {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+    transition: 1.5s ease-in;
+    filter: saturate(0%);
+ 
+}
+#home .hero .image-container:nth-child(1){
+    z-index: -3;
+}
+#home .hero .image-container:nth-child(2){
+    z-index: -2;
+    opacity: 1;
+}
+#home .hero .image-container img.scale {
+    transform: scale(1.04);
+}
+
+#home .hero .content {
+    color: var(--bg-1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: fit-content;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 2.5vw;
+}
+
+#home .hero .content .word .word-content  {
+    font-size: 6vw;
+    font-family: brand;
+    position: relative;
+    height: 6vw;
+    overflow: hidden;
+    width: 105%;
+    transition: .4s;
+}
+#home .hero .content .word .word-content section {
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    transform: skew(-10deg);
+}
+
+#home .hero .content .word:hover .word-content section.upper div {
+    transform: translateY(-6vw);
+    opacity: .4;
+} 
+#home .hero .content .word .word-content section.lower div {
+    opacity: .4;
+}
+#home .hero .content .word:hover .word-content section.lower div {
+    transform: translateY(0px);
+    opacity: 1;
+} 
+#home .hero .content .word .word-content section.lower {
+    position: absolute;
+    top: 0rem;
+    left: 0;
+}
+#home .hero .content .word .word-content section.lower div {
+    transform: translateY(100%)
+    
+}
+@media (max-width:992px){
+    #home .hero .content {
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        left: var(--space);
+        right: initial
+    }
+    #home .hero .content .word:hover .word-content section.upper div {
+        transform: translateY(-12vw);
+    }
+    #home .hero .content .word .word-content {
+        height: 12vw;
+        font-size: 12vw;
+    }
+}
+@media (max-width:768px){
+    #home .hero .content .word .word-content {
+        height: 8vw;
+        font-size: 8vw;
+    }
+    #home .hero .content .word:hover .word-content section.upper div {
+        transform: translateY(-8vw);
+    }
+}
+@media (max-width:600px){
+    #home .hero {
+        height: 70vh !important;
+    }
+    #home .hero .content {
+        top: calc(50vh - 30vh);
+        top: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+    #home .hero .content .word .word-content {
+        height: 12vw;
+        font-size: 12vw;
+    }
+    
+    #home .hero .content .word:hover .word-content section.upper div {
+        transform: translateY(-12vw);
+    }
+}
+
+#home .about {
+    padding: 3rem 0;
+}
+#home .about .container{
+    margin: 4rem var(--space);
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 2rem));
+    gap: 4rem;
+}
+#home .about .container .desc h1 {
+    display: flex;
+    font-size: 4vw;
+    height: 4vw;
+    overflow: hidden;
+}
+
+#home .about .container .desc h1 div {
+    transform: translateY(4vw);
+    transition: .2s;
+    opacity: 0;
+}
+#home .about .container .desc h1 div:nth-child(1){transition: .2s;}
+#home .about .container .desc h1 div:nth-child(2){transition: .4s;}
+#home .about .container .desc h1 div:nth-child(3){transition: .6s;}
+#home .about .container .desc h1 div:nth-child(4){transition: .8s;}
+#home .about .container .desc h1 div:nth-child(5){transition: 1s;}
+#home .about.active .container .desc h1 div {
+    transform: translateY(0vw);
+    opacity: 1;
+}
+#home .about .container .desc p {
+    margin-top: 1.5rem;
+    opacity: 0;
+}
+#home .about.active .container .desc p {
+    opacity: 1;
+}
+#home .about .container .image-side {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    /* height: 100vh; */
+}
+#home .about .container .image-side .icon {
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--bg-1);
+    font-size: 1vw;
+    border-radius: 50%;
+    margin-left: auto;
+    transition: .2s;
+    opacity: 0;
+}
+#home .about.active .container .image-side .icon {
+    opacity: 1;
+}
+#home .about .container .image {
+    width: 100%;
+    height: 80%;
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0;
+    transition: .4s;
+    margin-top: 2rem;
+}
+#home .about.active .container .image {
+    opacity: 1;
+}
+#home .about .container img {
+    object-fit: cover;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    transition: .2s;
+    transform: scale(1.7);
+}
+
+@media (max-width:992px){
+    #home .about .container {
+        grid-template-columns: 100%;
+    }
+    #home .about .container .image-side .icon {
+        width: 7vw;
+        height: 7vw;
+        font-size: 2.5vw;
+    }
+}
+@media (max-width:768px){
+    #home .about .container .image-side .icon {
+        width: 10vw;
+        height: 10vw;
+        font-size: 3.5vw;
+    }
+    #home .about .container .desc h1 {
+        font-size: 7vw;
+        height: 7vw;
+    }
+    #home .about .container .desc p {
+        font-size: 1rem;
+    }
+}
+
+
+
+#home .achivements {
+    padding: 3rem 0;
+    border-top: 1px solid var(--bg-3);
+    position: relative;
+    overflow: hidden !important;
+}
+#home .achivements .servicesBtn {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-1);
+    border-radius: 50%;
+    position: absolute;
+    top: -4rem;
+    left: 0;
+    background: var(--primary);
+    z-index: 0;
+    transition: .3s ease-in transform;
+}
+#home .achivements .servicesBtn:hover {
+    transform: scale(.8);
+}
+#home .achivements .container{
+    margin: 4rem var(--space);
+    overflow: hidden;
+}
+#home .achivements .container .desc h1 {
+    display: flex;
+    font-size: 2.5vw;
+    height: 2.5vw;
+    overflow: hidden;
+}
+
+#home .achivements .container .desc h1 div {
+    transform: translateY(4vw);
+    transition: .2s;
+    opacity: 0;
+}
+#home .achivements .container .desc h1 div:nth-child(1){transition: .2s;}
+#home .achivements .container .desc h1 div:nth-child(2){transition: .3s;}
+#home .achivements .container .desc h1 div:nth-child(3){transition: .4s;}
+#home .achivements .container .desc h1 div:nth-child(4){transition: .5s;}
+#home .achivements .container .desc h1 div:nth-child(5){transition: .6;}
+#home .achivements .container .desc h1 div:nth-child(6){transition: .7s;}
+#home .achivements .container .desc h1 div:nth-child(7){transition: .8s;}
+#home .achivements .container .desc h1 div:nth-child(8){transition: .9s;}
+#home .achivements .container .desc h1 div:nth-child(9){transition: 1s;}
+#home .achivements .container .desc h1 div:nth-child(10){transition: 1.1s;}
+#home .achivements .container .desc h1 div:nth-child(11){transition: 1.2s;}
+#home .achivements .container .desc h1 div:nth-child(12){transition: 1.3s;}
+#home .achivements.active .container .desc h1 div {
+    transform: translateY(0vw);
+    opacity: 1;
+}
+#home .achivements .container .content {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: .5rem;
+}
+#home .achivements .container .content .achievment {
+    border: 1px solid var(--bg-3);
+    padding: 1.5rem;
+    position: relative;
+    border-radius: 3px;
+    background: var(--bg-1);
+    overflow: hidden;
+    z-index: 0;
+}
+#home .achivements .container .content .achievment:after {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    background: var(--primary);
+    z-index: -1;
+    clip-path: inset(100% 0 0 0);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+#home .achivements .container .content .achievment:hover:after {
+    clip-path: inset(0 0 0 0);
+}
+#home .achivements .container .content .achievment:hover {
+    color: var(--bg-1);
+}
+#home .achivements .container .content .achievment * {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+#home .achivements .container .content .achievment h2 {
+    color: var(--primary);
+    font-size: 1.6rem;
+    position: relative;
+    overflow: hidden;
+    margin: .4rem 0;
+}
+#home .achivements .container .content .achievment h2 div {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+#home .achivements .container .content .achievment h2 div:nth-child(2) {
+    transform: translateY(1.6rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--bg-1);
+}
+#home .achivements .container .content .achievment:hover h2 div:nth-child(1){
+    transform: translateY(-1.6rem);
+}
+#home .achivements .container .content .achievment:hover h2 div:nth-child(2){
+    transform: translateY(0rem);
+}
+#home .achivements .container .content .achievment h3 {
+    font-family: main-bold;
+    font-size: 1.4rem;
+}
+#home .achivements .container .content .achievment p {
+    padding: .5rem 0;
+    margin-top: .5rem;
+    border-top: 1px solid var(--bg-3);
+}
+#home .achivements .container .content .achievment:hover p {
+    border-color: rgba(255, 255, 255, 0.123);
+}
+@media (max-width:992px){
+    #home .achivements .container .content {
+        grid-template-columns: repeat(2, auto);
+    }
+}
+@media (max-width:600px){
+    #home .achivements .container .desc h1 {
+        font-size: 7vw;
+        height: 7vw;
+    }
+    #home .achivements .container .content {
+        grid-template-columns: repeat(1, auto);
+    }
+    #home .achivements .container .content .achievment h3 {
+        font-size: 1.3rem !important;
+    }
+}
